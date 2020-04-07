@@ -33,15 +33,19 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CString">
-      <HintPath>libs\CString.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="UnityEngine">
       <HintPath>libs\UnityEngine.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CString\ArrayPool.cs" />
+    <Compile Include="CString\CString.cs" />
+    <Compile Include="CString\ExtensionLibs.cs" />
+    <Compile Include="CString\FreeList.cs" />
+    <Compile Include="CString\IStringBlock.cs" />
+    <Compile Include="CString\NumberFormatercs.cs" />
+    <Compile Include="CString\StringPool.cs" />
     <Compile Include="Debugger\ConstStringTable.cs" />
     <Compile Include="Debugger\Debugger.cs" />
     <Compile Include="Debugger\ExtendMethods.cs" />
