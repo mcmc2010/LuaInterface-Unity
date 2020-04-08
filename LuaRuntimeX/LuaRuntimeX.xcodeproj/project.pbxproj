@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3B65FB5A243E4C6800230442 /* luaruntime_ios.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B65FB59243E4C6800230442 /* luaruntime_ios.m */; };
-		3B65FB5B243E4C6800230442 /* luaruntime_ios.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3B65FB58243E4C6800230442 /* luaruntime_ios.h */; };
+		3B65FB5A243E4C6800230442 /* LuaRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B65FB59243E4C6800230442 /* LuaRuntime.m */; };
+		3B65FB5B243E4C6800230442 /* LuaRuntime.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3B65FB58243E4C6800230442 /* LuaRuntime.h */; };
+		3B65FB6D243E553600230442 /* LuaRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B65FB59243E4C6800230442 /* LuaRuntime.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -18,20 +19,29 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				3B65FB5B243E4C6800230442 /* luaruntime_ios.h in CopyFiles */,
+				3B65FB5B243E4C6800230442 /* LuaRuntime.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3B65FB56243E4C6800230442 /* libluaruntime-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libluaruntime-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3B65FB58243E4C6800230442 /* luaruntime_ios.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = luaruntime_ios.h; sourceTree = "<group>"; };
-		3B65FB59243E4C6800230442 /* luaruntime_ios.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = luaruntime_ios.m; sourceTree = "<group>"; };
+		3B65FB56243E4C6800230442 /* libluaruntime.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libluaruntime.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B65FB58243E4C6800230442 /* LuaRuntime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LuaRuntime.h; sourceTree = "<group>"; };
+		3B65FB59243E4C6800230442 /* LuaRuntime.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LuaRuntime.m; sourceTree = "<group>"; };
+		3B65FB67243E527C00230442 /* luaruntime.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = luaruntime.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B65FB69243E527C00230442 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		3B65FB53243E4C6800230442 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3B65FB64243E527C00230442 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -44,7 +54,9 @@
 		3B65FB21243E498E00230442 = {
 			isa = PBXGroup;
 			children = (
-				3B65FB57243E4C6800230442 /* luaruntime-ios */,
+				3B65FB58243E4C6800230442 /* LuaRuntime.h */,
+				3B65FB59243E4C6800230442 /* LuaRuntime.m */,
+				3B65FB68243E527C00230442 /* luaruntime */,
 				3B65FB2C243E498E00230442 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -52,18 +64,18 @@
 		3B65FB2C243E498E00230442 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3B65FB56243E4C6800230442 /* libluaruntime-ios.a */,
+				3B65FB56243E4C6800230442 /* libluaruntime.a */,
+				3B65FB67243E527C00230442 /* luaruntime.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3B65FB57243E4C6800230442 /* luaruntime-ios */ = {
+		3B65FB68243E527C00230442 /* luaruntime */ = {
 			isa = PBXGroup;
 			children = (
-				3B65FB58243E4C6800230442 /* luaruntime_ios.h */,
-				3B65FB59243E4C6800230442 /* luaruntime_ios.m */,
+				3B65FB69243E527C00230442 /* Info.plist */,
 			);
-			path = "luaruntime-ios";
+			path = luaruntime;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,8 +95,25 @@
 			);
 			name = "luaruntime-ios";
 			productName = "luaruntime-ios";
-			productReference = 3B65FB56243E4C6800230442 /* libluaruntime-ios.a */;
+			productReference = 3B65FB56243E4C6800230442 /* libluaruntime.a */;
 			productType = "com.apple.product-type.library.static";
+		};
+		3B65FB66243E527C00230442 /* luaruntime */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3B65FB6A243E527C00230442 /* Build configuration list for PBXNativeTarget "luaruntime" */;
+			buildPhases = (
+				3B65FB63243E527C00230442 /* Sources */,
+				3B65FB64243E527C00230442 /* Frameworks */,
+				3B65FB65243E527C00230442 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = luaruntime;
+			productName = luaruntime;
+			productReference = 3B65FB67243E527C00230442 /* luaruntime.bundle */;
+			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
 
@@ -96,6 +125,9 @@
 				ORGANIZATIONNAME = "enos sariel";
 				TargetAttributes = {
 					3B65FB55243E4C6800230442 = {
+						CreatedOnToolsVersion = 11.2.1;
+					};
+					3B65FB66243E527C00230442 = {
 						CreatedOnToolsVersion = 11.2.1;
 					};
 				};
@@ -113,17 +145,36 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				3B65FB66243E527C00230442 /* luaruntime */,
 				3B65FB55243E4C6800230442 /* luaruntime-ios */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3B65FB65243E527C00230442 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3B65FB52243E4C6800230442 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B65FB5A243E4C6800230442 /* luaruntime_ios.m in Sources */,
+				3B65FB5A243E4C6800230442 /* LuaRuntime.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3B65FB63243E527C00230442 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B65FB6D243E553600230442 /* LuaRuntime.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,10 +233,11 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -238,10 +290,11 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -253,9 +306,11 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8TF9JJP47U;
-				ONLY_ACTIVE_ARCH = NO;
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-fember-bitcode",
+				);
+				PRODUCT_NAME = luaruntime;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -267,13 +322,55 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8TF9JJP47U;
-				ONLY_ACTIVE_ARCH = NO;
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-fember-bitcode",
+				);
+				PRODUCT_NAME = luaruntime;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3B65FB6B243E527C00230442 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1002;
+				DEVELOPMENT_TEAM = 8TF9JJP47U;
+				INFOPLIST_FILE = luaruntime/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MARKETING_VERSION = 1.01;
+				OTHER_LDFLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mcmcx.luaruntime;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		3B65FB6C243E527C00230442 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1002;
+				DEVELOPMENT_TEAM = 8TF9JJP47U;
+				INFOPLIST_FILE = luaruntime/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MARKETING_VERSION = 1.01;
+				OTHER_LDFLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mcmcx.luaruntime;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
 			};
 			name = Release;
 		};
@@ -294,6 +391,15 @@
 			buildConfigurations = (
 				3B65FB5D243E4C6800230442 /* Debug */,
 				3B65FB5E243E4C6800230442 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3B65FB6A243E527C00230442 /* Build configuration list for PBXNativeTarget "luaruntime" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B65FB6B243E527C00230442 /* Debug */,
+				3B65FB6C243E527C00230442 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
