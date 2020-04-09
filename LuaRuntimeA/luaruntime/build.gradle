@@ -47,6 +47,42 @@ android {
         targetCompatibility = 1.8
     }
 
+    android.libraryVariants.all { variant ->
+        def version_name = "${defaultConfig.versionName}".replace(".", "")
+
+        if(variant.name.equalsIgnoreCase("debug")) {
+            def file_name = "luaruntime_${version_name}_${defaultConfig.versionCode}_d.aar"
+
+            // 复制aar到指定目录
+            variant.assemble.doLast {
+                variant.outputs.all { output ->
+                    def outputPath = [project.rootDir.absolutePath, "dist"].join(File.separator)
+                    def outputFile = "${outputPath}${File.separator}${file_name}"
+                    copy {
+                        from output.outputFile
+                        into outputFile
+                    }
+                    println("Copying : ${output.outputFile} -> ${outputFile}")
+                }
+            }
+        } else {
+            def file_name = "luaruntime_${version_name}_${defaultConfig.versionCode}.aar"
+
+            // 复制aar到指定目录
+            variant.assemble.doLast {
+                variant.outputs.all { output ->
+                    def outputPath = [project.rootDir.absolutePath, "dist"].join(File.separator)
+                    def outputFile = "${outputPath}${File.separator}${file_name}"
+                    copy {
+                        from output.outputFile
+                        into outputFile
+                    }
+                    println("Copying : ${output.outputFile} -> ${outputFile}")
+                }
+            }
+        }
+
+    }
 }
 
 dependencies {

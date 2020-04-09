@@ -49,6 +49,46 @@ LOCAL_SRC_FILES := lua/lapi.c \
 
 include $(BUILD_STATIC_LIBRARY)
 
+# ------------------ Building cjson ------------------------------
+include $(CLEAR_VARS)
+LOCAL_MODULE        := cjson
+LOCAL_C_INCLUDES    := $(LOCAL_PATH)/lua
+
+LOCAL_CPPFLAGS      := -O2 -std=c++11
+LOCAL_CFLAGS        := -O2 -std=c11
+
+LOCAL_SRC_FILES := cjson/lua_cjson.c \
+                   cjson/fpconv.c \
+                   cjson/strbuf.c
+
+include $(BUILD_STATIC_LIBRARY)
+
+# ------------------ Building luasocket ------------------------------
+include $(CLEAR_VARS)
+LOCAL_MODULE        := luasocket
+LOCAL_C_INCLUDES    := $(LOCAL_PATH)/lua
+LOCAL_C_INCLUDES    += $(LOCAL_PATH)/cjson
+
+LOCAL_CPPFLAGS      := -O2 -std=c++11
+LOCAL_CFLAGS        := -O2 -std=c11
+
+LOCAL_SRC_FILES := luasocket/auxiliar.c \
+                   luasocket/buffer.c \
+                   luasocket/except.c \
+                   luasocket/inet.c \
+                   luasocket/io.c \
+                   luasocket/luasocket.c \
+                   luasocket/mime.c \
+                   luasocket/options.c \
+                   luasocket/select.c \
+                   luasocket/tcp.c \
+                   luasocket/timeout.c \
+                   luasocket/udp.c \
+                   luasocket/usocket.c \
+                   luasocket/compat.c
+
+include $(BUILD_STATIC_LIBRARY)
+
 # ------------------ Building Lua Runtime ------------------------------
 include $(CLEAR_VARS)
 LOCAL_PRELINK_MODULE    := false
@@ -56,14 +96,20 @@ LOCAL_PRELINK_MODULE    := false
 LOCAL_MODULE            := luaruntime
 
 LOCAL_C_INCLUDES        := $(LOCAL_PATH)/lua
+LOCAL_C_INCLUDES        += $(LOCAL_PATH)/cjson
+LOCAL_C_INCLUDES        += $(LOCAL_PATH)/luasocket
 LOCAL_C_INCLUDES        += $(LOCAL_PATH)/util
 LOCAL_CFLAGS            := -O2 -std=c11 -DANDROID_NDK
 LOCAL_CPPFLAGS          := -O2 -std=c++11 -DANDROID_NDK
 #LOCAL_LDLIBS 	        := -landroid -ldl
-LOCAL_STATIC_LIBRARIES  := lua
+LOCAL_STATIC_LIBRARIES  := lua cjson luasocket
 
 LOCAL_SRC_FILES         := util/tolua.c \
 					       util/int64.c \
-					       util/uint64.c
+					       util/uint64.c \
+					       util/bit.c \
+					       util/lpeg.c \
+					       util/pb.c \
+					       util/struct.c
 
 include $(BUILD_SHARED_LIBRARY)

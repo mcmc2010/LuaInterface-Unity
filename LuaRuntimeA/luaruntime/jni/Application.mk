@@ -1,5 +1,4 @@
 #
-APP_MODULES             := liblua
 APP_PLATFORM            := android-21
 NDK_TOOLCHAIN_VERSION   := clang3.5
 NDK_PROJECT_PATH        := jni/
