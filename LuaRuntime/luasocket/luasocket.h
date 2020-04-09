@@ -17,6 +17,10 @@
 /*-------------------------------------------------------------------------*\
 * This macro prefixes all exported API functions
 \*-------------------------------------------------------------------------*/
+#ifdef LUALIB_API
+#define LUASOCKET_API LUALIB_API
+#endif
+
 #ifndef LUASOCKET_API
 #define LUASOCKET_API extern
 #endif
