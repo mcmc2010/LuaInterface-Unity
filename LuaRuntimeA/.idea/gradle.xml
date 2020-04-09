@@ -10,6 +10,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/luademo" />
+            <option value="$PROJECT_DIR$/luaruntime" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
