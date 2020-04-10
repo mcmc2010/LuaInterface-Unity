@@ -102,7 +102,8 @@ LOCAL_C_INCLUDES        += $(LOCAL_PATH)/util
 LOCAL_CFLAGS            := -O2 -std=c11 -DANDROID_NDK
 LOCAL_CPPFLAGS          := -O2 -std=c++11 -DANDROID_NDK
 #LOCAL_LDLIBS 	        := -landroid -ldl
-LOCAL_STATIC_LIBRARIES  := lua cjson luasocket
+#LOCAL_STATIC_LIBRARIES  := lua cjson luasocket
+LOCAL_WHOLE_STATIC_LIBRARIES := lua cjson luasocket
 
 LOCAL_SRC_FILES         := util/tolua.c \
 					       util/int64.c \
