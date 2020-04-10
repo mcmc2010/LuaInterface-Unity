@@ -49,36 +49,26 @@ android {
 
     android.libraryVariants.all { variant ->
         def version_name = "${defaultConfig.versionName}".replace(".", "")
+        def file_name = "luaruntime_${version_name}_${defaultConfig.versionCode}.aar"
+        if (variant.buildType.isDebuggable()) {
+            file_name = "luaruntime_${version_name}_${defaultConfig.versionCode}_d.aar"
+        }
 
-        if(variant.name.equalsIgnoreCase("debug")) {
-            def file_name = "luaruntime_${version_name}_${defaultConfig.versionCode}_d.aar"
+        variant.outputs.each { output ->
+            output.outputFileName = "luaruntime.aar";
+        }
 
-            // 复制aar到指定目录
-            variant.assemble.doLast {
-                variant.outputs.all { output ->
-                    def outputPath = [project.rootDir.absolutePath, "dist"].join(File.separator)
-                    def outputFile = "${outputPath}${File.separator}${file_name}"
-                    copy {
-                        from output.outputFile
-                        into outputFile
-                    }
-                    println("Copying : ${output.outputFile} -> ${outputFile}")
+        // 复制aar到指定目录
+        variant.assemble.doLast {
+            variant.outputs.all { output ->
+
+                def outputPath = [project.rootDir.absolutePath, "dist"].join(File.separator)
+                copy {
+                    from output.outputFile
+                    into outputPath
+                    rename { file_name }
                 }
-            }
-        } else {
-            def file_name = "luaruntime_${version_name}_${defaultConfig.versionCode}.aar"
-
-            // 复制aar到指定目录
-            variant.assemble.doLast {
-                variant.outputs.all { output ->
-                    def outputPath = [project.rootDir.absolutePath, "dist"].join(File.separator)
-                    def outputFile = "${outputPath}${File.separator}${file_name}"
-                    copy {
-                        from output.outputFile
-                        into outputFile
-                    }
-                    println("Copying : ${output.outputFile} -> ${outputFile}")
-                }
+                println("Copying : ${output.outputFile} -> ${outputFile}")
             }
         }
 
