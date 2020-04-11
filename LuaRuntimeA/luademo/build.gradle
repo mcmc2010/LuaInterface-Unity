@@ -33,4 +33,5 @@ dependencies {
 
     //
     implementation project(path: ':luaruntime')
+    implementation files('libs/unity/classes.jar')
 }
