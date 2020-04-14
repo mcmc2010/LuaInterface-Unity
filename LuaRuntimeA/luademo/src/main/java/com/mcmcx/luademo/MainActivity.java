@@ -16,6 +16,6 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         LuaAssetsLoader loader = LuaAssetsLoader.getSingletonAndCreate(this);
-        loader.readStringFromFile("jarfile://"+this.getApplicationContext().getPackageResourcePath() + "!/assets/Lua/tolua.lua");
+        loader.readStringFromFile("jar:file://"+this.getApplicationContext().getPackageResourcePath() + "!/assets/Lua/tolua.lua");
     }
 }

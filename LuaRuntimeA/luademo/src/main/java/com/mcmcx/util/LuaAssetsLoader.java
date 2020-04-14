@@ -107,9 +107,10 @@ public class LuaAssetsLoader
     }
 
     public byte[] readBufferFromFile(String filename) {
+
         try {
-            if(filename.contains("jarfile://")) {
-                filename = filename.replace("jarfile://", "");
+            if(filename.contains("jar:file://")) {
+                filename = filename.replace("jar:file://", "");
                 filename = filename.replace(this._assetBaseDir, "");
 
                 if(_assetManager != null) {
@@ -140,8 +141,8 @@ public class LuaAssetsLoader
 
     public String readStringFromFile(String filename) {
         try {
-            if(filename.contains("jarfile://")) {
-                filename = filename.replace("jarfile://", "");
+            if(filename.contains("jar:file://")) {
+                filename = filename.replace("jar:file://", "");
                 filename = filename.replace(this._assetBaseDir, "");
 
                 if(_assetManager != null) {
