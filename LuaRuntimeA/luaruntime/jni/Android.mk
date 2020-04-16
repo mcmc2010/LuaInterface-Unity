@@ -89,6 +89,32 @@ LOCAL_SRC_FILES := luasocket/auxiliar.c \
 
 include $(BUILD_STATIC_LIBRARY)
 
+# ------------------ Building protobuf-c ------------------------------
+include $(CLEAR_VARS)
+LOCAL_MODULE        := protobuf
+LOCAL_C_INCLUDES    := $(LOCAL_PATH)/lua
+LOCAL_C_INCLUDES    += $(LOCAL_PATH)/cjson
+
+LOCAL_CPPFLAGS      := -O2 -std=c++11
+LOCAL_CFLAGS        := -O2 -std=c11
+
+LOCAL_SRC_FILES := pbc/alloc.c \
+                   pbc/array.c \
+                   pbc/bootstrap.c \
+                   pbc/context.c \
+                   pbc/decode.c \
+                   pbc/map.c \
+                   pbc/pattern.c \
+                   pbc/pbc-lua.c \
+                   pbc/proto.c \
+                   pbc/register.c \
+                   pbc/rmessage.c \
+                   pbc/stringpool.c \
+                   pbc/varint.c \
+                   pbc/wmessage.c
+
+include $(BUILD_STATIC_LIBRARY)
+
 # ------------------ Building Lua Runtime ------------------------------
 include $(CLEAR_VARS)
 LOCAL_PRELINK_MODULE    := false
@@ -103,7 +129,7 @@ LOCAL_CFLAGS            := -O2 -std=c11 -DANDROID_NDK
 LOCAL_CPPFLAGS          := -O2 -std=c++11 -DANDROID_NDK
 #LOCAL_LDLIBS 	        := -landroid -ldl
 #LOCAL_STATIC_LIBRARIES  := lua cjson luasocket
-LOCAL_WHOLE_STATIC_LIBRARIES := lua cjson luasocket
+LOCAL_WHOLE_STATIC_LIBRARIES := lua cjson luasocket protobuf
 
 LOCAL_SRC_FILES         := util/tolua.c \
 					       util/int64.c \
